@@ -1,0 +1,9 @@
+# This contains the list of files/folders that would not be tracked by Git #
+
+# Jupiter Notebook #
+*.ipynb_checkpoints
+
+
+/__pycache__/
+
+# Data #
