@@ -26,6 +26,9 @@ run_model: run_all
 
 # to be added here #
 
+run_api:
+	@streamlit run /home/aygul_unix/Projects/dssg2023_neet/neet/streamlit_api/app.py
+
 #################### TESTS ###################
 
 #################### DATA SOURCES ACTIONS ###################
