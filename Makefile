@@ -31,4 +31,7 @@ run_api:
 
 #################### TESTS ###################
 
+test:
+	@pytest -v tests
+
 #################### DATA SOURCES ACTIONS ###################
