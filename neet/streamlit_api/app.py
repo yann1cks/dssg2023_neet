@@ -41,6 +41,8 @@ uploaded_file = st.file_uploader("Choose your csv file", type=['csv'], key="2", 
 
 if uploaded_file is not None:
 
+    # Validation rule #
+
     csv_data = pd.read_csv(uploaded_file)
 
     csv_data
