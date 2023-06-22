@@ -3,7 +3,12 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
-st.set_page_config(page_title="NEET Risk Dashboard", page_icon="📚", layout="wide")
+st.set_page_config(
+    page_title="NEET Risk Dashboard", 
+    page_icon="📚", 
+    layout="wide"
+)
+
 
 # Function to create a count plot
 def create_count_plot(data):
@@ -74,6 +79,10 @@ def plot_ethnicity_columns(data):
 
 # Main Streamlit app
 def main():
+
+    # Add global styles
+    ut.add_global_styles()
+
     # Initialize the session state if it doesn't exist
     if "data" not in st.session_state:
         st.session_state.data = []

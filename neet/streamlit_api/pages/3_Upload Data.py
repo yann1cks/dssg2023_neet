@@ -8,7 +8,6 @@ st.set_page_config(
     page_icon="📈",
 )
 
-
 # Main Streamlit app
 def main():
     
@@ -37,4 +36,3 @@ def main():
 # Run the Streamlit app
 if __name__ == '__main__':
     main()
-
