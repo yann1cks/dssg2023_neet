@@ -1,8 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-
-st.set_page_config(page_title="NEET Risk Dashboard", page_icon="📚", layout="wide")
+import utils as ut
 
 # Function to create a count plot
 def create_count_plot(data):
@@ -35,6 +34,16 @@ def create_absence_table(data):
 
 # Main Streamlit app
 def main():
+
+    st.set_page_config(
+        page_title="NEET Risk Dashboard", 
+        page_icon="📚", 
+        layout="wide"
+    )
+
+    # Add global styles
+    ut.add_global_styles()
+
     # Initialize the session state if it doesn't exist
     if "data" not in st.session_state:
         st.session_state.data = []
