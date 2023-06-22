@@ -1,8 +1,10 @@
 import streamlit as st
+import utils as ut
+
 import pandas as pd
 
 st.set_page_config(
-    page_title="Upload data",
+    page_title="Upload Data",
     page_icon="📈",
 )
 
@@ -10,6 +12,9 @@ st.set_page_config(
 # Main Streamlit app
 def main():
     
+    # Add global styles
+    ut.add_global_styles()
+
     # Initialize the session state if it doesn't exist
     if 'data' not in st.session_state:
         st.session_state.data = []
