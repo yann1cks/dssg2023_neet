@@ -8,7 +8,6 @@ st.set_page_config(
     page_icon="📈",
 )
 
-
 # Main Streamlit app
 def main():
     
@@ -49,4 +48,8 @@ def main():
 
 # Run the Streamlit app
 if __name__ == '__main__':
+<<<<<<< HEAD:neet/streamlit_api/pages/Upload Data.py
     main()
+=======
+    main()
+>>>>>>> f57e7391beede43248bc58bd2bcd11a02347eb5f:neet/streamlit_api/pages/3_Upload Data.py

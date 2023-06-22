@@ -1,7 +1,10 @@
 import streamlit as st
 import utils as ut
 
-st.set_page_config(page_title="About the project", page_icon="📈")
+st.set_page_config(
+    page_title="About the project", 
+    page_icon="📈"
+)
 
 def main():
 
