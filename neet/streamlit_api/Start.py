@@ -72,6 +72,54 @@ def plot_ethnicity_columns(data):
     # Display the bar graph
     st.plotly_chart(fig)
 
+# Function to create a bar graph for the languages
+import plotly.express as px
+
+def plot_language_graph(data):
+    # Filter the columns starting with "ethnicity"
+    lang_graph = [col for col in data.columns if col.startswith("language")]
+
+    # Calculate the count of each ethnicity
+    language_counts = data[lang_graph].sum().sort_values(ascending=False)
+
+    # Create a bar graph using plotly
+    fig = px.bar(
+        x=language_counts.values,
+        y=language_counts.index,
+        orientation="h",
+        title="Language Counts",
+        labels={"x": "Count", "y": "Languages"},
+    )
+
+    # Change the color of the bars to green
+    fig.update_traces(marker_color="green")
+
+    # Display the bar graph
+    st.plotly_chart(fig)
+
+#to display summary cards
+def show_summary_card(data):
+    # Get the total number of students
+    total_students = len(data)
+    
+    # Display the number of students in a box
+    st.info(f"Total Students: {total_students}")
+
+
+def plot_birth_columns(data):
+    # Filter the columns starting with "birth"
+    birth_columns = [col for col in data.columns if col.startswith("birth")]
+
+    # Create a DataFrame with the count of entries in each birth column
+    counts = pd.DataFrame(data[birth_columns].sum(), columns=['Count']).reset_index()
+    counts.rename(columns={'index': 'Year'}, inplace=True)
+
+    # Create a line chart using plotly
+    fig = px.line(counts, x='Year', y='Count', title='Number of students who are born in each month')
+
+    # Display the line chart
+    st.plotly_chart(fig)
+
 # Main Streamlit app
 def main():
     # Initialize the session state if it doesn't exist
@@ -84,9 +132,10 @@ def main():
     if st.session_state.data:
         # Combine all the uploaded data
         combined_data = pd.concat(st.session_state.data, ignore_index=True)
-
+        show_summary_card(combined_data)
         # Create two columns for the graphs
         col1, col2 = st.columns(2)
+        col3, col4 = st.columns(2)
 
         with col1:
             create_count_plot(combined_data)
@@ -94,8 +143,16 @@ def main():
         with col2:
             display_gender_enrollment_pie_chart(combined_data)
 
-        plot_ethnicity_columns(combined_data)
+        with col3:
+            plot_ethnicity_columns(combined_data)
+
+        with col4:
+            plot_language_graph(combined_data)
+    
+        plot_birth_columns(combined_data)
         create_absence_table(combined_data)
+        
+        
 
     else:
         st.warning("No data uploaded.")

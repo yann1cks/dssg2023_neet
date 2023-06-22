@@ -20,21 +20,33 @@ def main():
         st.session_state.data = []
     
     st.header("This is where you upload")
-    uploaded_files = st.file_uploader("Upload CSV files", type="csv", accept_multiple_files=True)
     
-    if uploaded_files:
-        for uploaded_file in uploaded_files:
-            # Read the uploaded CSV file
-            data = pd.read_csv(uploaded_file)
-            
-            # Display the uploaded data
-            st.subheader("Uploaded Data")
-            st.write(data)
-            
-            # Append the new data to the existing data
-            st.session_state.data.append(data)
+    # Check if the file "train_singleUPN.csv" exists
+    if 'train_singleUPN.csv' not in st.session_state:
+        # Read the CSV file
+        data = pd.read_csv('train_singleUPN.csv')
+        
+        # Display the data from the file
+        st.subheader("Existing Data")
+        st.write(data)
+        
+        # Append the data to the session state
+        st.session_state.data.append(data)
+        
+        # Save the file reference in session state
+        st.session_state['train_singleUPN.csv'] = True
+    else:
+        # If the file already exists, directly use the data
+        data = pd.read_csv('train_singleUPN.csv')
+        
+        # Display the existing data
+        st.subheader("Existing Data")
+        st.write(data)
+        
+        # Append the existing data to the session state
+        st.session_state.data.append(data)
+
 
 # Run the Streamlit app
 if __name__ == '__main__':
     main()
-
