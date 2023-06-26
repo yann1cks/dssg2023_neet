@@ -3,13 +3,13 @@ import utils as ut
 
 st.set_page_config(
     page_title="About the project", 
-    page_icon="📈"
+    page_icon="🔮"
 )
 
 def main():
 
     # Add global styles
-    ut.add_global_styles()
+    ut.add_custom_css()
 
     st.title('About the project')
 
