@@ -1,71 +1,63 @@
+import os
+from dotenv import load_dotenv
 
-import numpy as np
-import pandas as pd
+# Load environment variables from the .env file
 
-# Example - to be changed! #
+load_dotenv('..\..\.env')
 
-# from neet.ml_logic.data import clean_data
-# from neet.ml_logic.model import initialize_model, compile_model, train_model, evaluate_model
-# from neet.ml_logic.params import DATASET_SIZE, VALIDATION_DATASET_SIZE
-# from neet.ml_logic.preprocessor import preprocess_features
-# from neet.ml_logic.utils import get_dataset_timestamp
-# from neet.ml_logic.registry import get_model_version, load_model, save_model
+# Read the input and output folder paths from the environment variables
 
 
-def preprocess(source_type = 'train'):
-    """
-    Preprocess the dataset (fitting in memory)
-    parameters:
-    - source_type: 'train' or 'val'
-    """
+def canonicalization(input_folder,output_folder,datasetype):
+    # Iterate over all files in the input folder
+    for file_name in os.listdir(input_folder):
+        if file_name.endswith('.csv'):
+            input_file = os.path.join(input_folder, file_name)
+            file_name_without_pattern = file_name.rsplit('_', 1)[1]
+            output_file = os.path.join(output_folder, f'{datasetype}_interim_{file_name_without_pattern}')
+            # Escape backslashes in file paths
+            input_file = input_file.replace('\\', '\\\\')
+            output_file = output_file.replace('\\', '\\\\')
+            print(f'Processing file: {input_file}')
+            # Perform your analysis or processing on the input_file and save the results to the output_file
+            os.system(f"python canonicalize.py  --inputs {input_file} --outputs {output_file} --dataset_type {datasetype}")
+            # Replace the below print statements with your actual code
+            print(f'Saving results to: {output_file}')
+     
+#Attendance Data        
+input_folder_attendance_data = os.getenv('INPUT_ATTENDENCE_ORIGINAL_FOLDER')
+output_folder_attendance_data = os.getenv('OUTPUT_ATTENDENCE_CANONICALIZED_FOLDER')
+datasetype ='attendance'
+canonicalization(input_folder_attendance_data,output_folder_attendance_data,datasetype)
 
-    # Here our code -- to be done! #
+#CCIS Data
+input_folder_ccis_data = os.getenv('INPUT_CCIS_ORIGINAL_FOLDER')
+output_folder_ccis_data = os.getenv('OUTPUT_CCIS_CANONICALIZED_FOLDER')
+datasetype = 'ccis'
+canonicalization(input_folder_ccis_data,output_folder_ccis_data,datasetype)
 
-    return None
+#Census Data
+input_folder_census_data = os.getenv('INPUT_CENSUS_ORIGINAL_FOLDER')
+output_folder_census_data = os.getenv('OUTPUT_CENSUS_CANONICALIZED_FOLDER')
+datasetype = 'census'
+canonicalization(input_folder_census_data,output_folder_census_data,datasetype)
 
-def train():
-    """
-    Train a new model on the full (already pre-processed) dataset
+#KS4 Data
+input_folder_ks4_data = os.getenv('INPUT_KS4_ORIGINAL_FOLDER')
+output_folder_ks4_data = os.getenv('OUTPUT_KS4_CANONICALIZED_FOLDER')
+datasetype = 'ks4'
+canonicalization(input_folder_ks4_data,output_folder_ks4_data,datasetype)
 
-    """
+#characteristics Data
+input_folder_characteristics_data = os.getenv('INPUT_CHARACTERISTICS_ORIGINAL_FOLDER')
+output_folder_characteristics_data = os.getenv('OUTPUT_CHARACTERISTICS_CANONICALIZED_FOLDER')
+datasetype = 'characteristics'
+canonicalization(input_folder_characteristics_data,output_folder_characteristics_data,datasetype)
 
-    model = None
-    model = load_model()  # production model
-
-    # Model params
-    # to be defined here
-
-    return # here some metric
-
-
-def evaluate():
-    """
-    Evaluate the performance of the latest production model on new data
-
-    """
-
-    return # here some metric
-
-
-def pred(X_pred: pd.DataFrame = None) -> np.ndarray:
-    """
-    Make a prediction using the latest trained model
-
-    """
-
-    # Here our code #
-
-    return # y_pred
-
-def package_name():
-    print("The package name is neet!")
+#School Info
+input_folder_school_info_data = os.getenv('INPUT_SCHOOL_INFO_ORIGINAL_FOLDER')
+output_folder_school_info_data = os.getenv('OUTPUT_SCHOOL_INFO_CANONICALIZED_FOLDER')
+datasetype = 'school_info'
+canonicalization(input_folder_school_info_data,output_folder_school_info_data,datasetype)
 
 
-
-if __name__ == '__main__':
-    # preprocess(source_type='train')
-    # preprocess(source_type='val')
-    # train()
-    # pred()
-    # evaluate()
-    package_name() # just a working example!
