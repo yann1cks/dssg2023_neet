@@ -1,0 +1,12 @@
+2023-06-26 14:39:23,229 INFO     Logfile will be written to ../logs\canonicalize_2023_06_26_14_39_23.txt
+2023-06-26 14:39:23,230 INFO     Reading ..\\..\\data\\synthetic_data\\attendance_original_csv\\attendance_original_jan22.csv
+2023-06-26 14:39:23,230 INFO     Reading all data as str
+2023-06-26 14:39:23,272 INFO     Replacing ['', '#VALUE!', 'nan'] with np.nan
+2023-06-26 14:39:23,352 INFO     Renaming columns of attendance dataset
+2023-06-26 14:39:23,353 INFO     Saving canonicalized data to ..\\..\\data\\interim\\attendance_canonicalized_csv\\attendance_interim_jan22.csv
+2023-06-26 14:39:23,924 INFO     Logfile will be written to ../logs\canonicalize_2023_06_26_14_39_23.txt
+2023-06-26 14:39:23,925 INFO     Reading ..\\..\\data\\synthetic_data\\attendance_original_csv\\attendance_original_may15.csv
+2023-06-26 14:39:23,925 INFO     Reading all data as str
+2023-06-26 14:39:23,959 INFO     Replacing ['', '#VALUE!', 'nan'] with np.nan
+2023-06-26 14:39:24,021 INFO     Renaming columns of attendance dataset
+2023-06-26 14:39:24,023 INFO     Saving canonicalized data to ..\\..\\data\\interim\\attendance_canonicalized_csv\\attendance_interim_may15.csv

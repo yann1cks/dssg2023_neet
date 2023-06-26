@@ -1,0 +1,6 @@
+2023-06-26 14:39:41,399 INFO     Logfile will be written to ../logs\canonicalize_2023_06_26_14_39_41.txt
+2023-06-26 14:39:41,399 INFO     Reading ..\\..\\data\\synthetic_data\\census_original_csv\\census_original_jan19.csv
+2023-06-26 14:39:41,399 INFO     Reading all data as str
+2023-06-26 14:39:41,441 INFO     Replacing ['', '#VALUE!', 'nan'] with np.nan
+2023-06-26 14:39:41,521 INFO     Renaming columns of census dataset
+2023-06-26 14:39:41,523 INFO     Saving canonicalized data to ..\\..\\data\\interim\\census_canonicalized_csv\\census_interim_jan19.csv
