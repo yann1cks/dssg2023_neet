@@ -12,12 +12,10 @@ st.set_page_config(
 def main():
     '''Renders the contents of the streamlit page.'''
 
-    # Add global styles
+    # Add global styles and load state
     ut.add_custom_css()
+    ut.initalize_global_state()
 
-    # Initialize the session state if it doesn't exist
-    if "data" not in st.session_state:
-        st.session_state.data = []
 
     st.title("Welcome to the Risko of NEET dashboard 👋", anchor=False)
 
