@@ -1,5 +1,8 @@
 # This is command "launcher". Used to launch training, model, tests, etc... #
 
+#################### VARIABLES ###################
+CURRENT_DIR := $(CURDIR)
+
 #################### PACKAGE ACTIONS ###################
 
 reinstall_package:
@@ -26,8 +29,8 @@ run_model: run_all
 
 # to be added here #
 
-run_api:
-	@streamlit run /home/aygul_unix/Projects/dssg2023_neet/neet/streamlit_api/app.py
+run_streamlit:
+	@streamlit run $(CURRENT_DIR)/neet/streamlit_api/Start.py
 
 #################### TESTS ###################
 

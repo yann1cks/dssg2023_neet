@@ -4,7 +4,10 @@
 *.ipynb_checkpoints
 
 
- __pycache__/
- *.pyc
+**/__pycache__/
+*.pyc
 
 # Data #
+
+# Streamlit #
+neet/streamlit_api/uploads/

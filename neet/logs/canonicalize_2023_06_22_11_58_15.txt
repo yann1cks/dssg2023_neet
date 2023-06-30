@@ -1,0 +1,6 @@
+2023-06-22 11:58:15,368 INFO     Logfile will be written to ../logs\canonicalize_2023_06_22_11_58_15.txt
+2023-06-22 11:58:15,368 INFO     Reading ..\\..\\data\\synthetic_data\\ccis_original_csv\\ccis_original_mar16.csv
+2023-06-22 11:58:15,368 INFO     Reading all data as str
+2023-06-22 11:58:15,430 INFO     Replacing ['', '#VALUE!', 'nan'] with np.nan
+2023-06-22 11:58:15,527 INFO     Renaming columns of ccis dataset
+2023-06-22 11:58:15,529 INFO     Saving canonicalized data to ..\\..\\data\\interim\\ccis_canonicalized_csv\\ccis_interim_mar16.csv
