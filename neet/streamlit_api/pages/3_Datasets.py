@@ -228,12 +228,12 @@ def render_list_of_files() -> None:
         Args:
             file_info: Dictionary with year, dataset_type and pandas dataframe.
         """
-        
+
         dataset_type = file_info["dataset_type"]
         year = file_info["year"]
 
         ## Remove from disk by rebulding the filename form file_info
-        file_name = ut.get_file_name(dataset_type,year)
+        file_name = ut.get_file_name(dataset_type, year)
         file_path = STREAMLIT_FOLDER / "uploads" / file_name
         file_path.unlink()
 
@@ -241,10 +241,10 @@ def render_list_of_files() -> None:
         data_raw = st.session_state.data_raw
 
         for item in data_raw.copy():
-            if item.get('year') == year and item.get('dataset_type') == dataset_type:
+            if item.get("year") == year and item.get("dataset_type") == dataset_type:
                 data_raw.remove(item)
                 break
-                
+
         st.session_state.data_raw = data_raw
 
     if not st.session_state.data_raw:
@@ -252,7 +252,6 @@ def render_list_of_files() -> None:
         return
 
     for type in DATASET_TYPES:
-
         files = list(
             filter(lambda d: d["dataset_type"] in [type], st.session_state.data_raw)
         )
@@ -278,10 +277,8 @@ def render_list_of_files() -> None:
                     key=title,
                     help="You cannot undo this action!",
                     on_click=remove_uploaded_file,
-                    args=(f,)
+                    args=(f,),
                 )
-
-    st.button("Process data & calculate risk", type="primary", on_click=ut.run_pipeline)
 
 
 # Main Streamlit app
@@ -301,6 +298,16 @@ def main():
         "Add explanation. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo."
     )
     render_list_of_files()
+
+    st.button("Process data & calculate risk", type="primary", on_click=ut.run_pipeline)
+
+    # TODO:If the final dataset is saved to disk we have to review this.
+    st.download_button(
+        label="Download processed data",
+        data=st.session_state.data_final_csv,
+        file_name="NEET_Rist_Predictions.csv",
+        mime="text/csv",
+    )
 
     st.header("About the data schemas")
 

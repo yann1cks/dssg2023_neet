@@ -5,6 +5,7 @@ import plotly.express as px
 
 st.set_page_config(page_title="Council information", page_icon="🔮")
 
+
 # Function to create a count plot
 def create_count_plot(data):
     # Create a count plot using plotly
@@ -27,7 +28,7 @@ def create_absence_table(data):
     filtered_data = data[data["neet_ever"] == True]
 
     # Select the desired columns for the table
-    table_data = filtered_data[["upn", "total_absences"]]
+    table_data = filtered_data[["total_absences"]]
 
     # Display the title
     st.subheader("Absence Details for NEET Students")
@@ -52,7 +53,7 @@ def display_gender_enrollment_pie_chart(data):
     )
 
     # Display the pie chart
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
 
 # Function to create a bar graph for ethnicity columns
@@ -73,7 +74,7 @@ def plot_ethnicity_columns(data):
     )
 
     # Display the bar graph
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
 
 def plot_language_graph(data):
@@ -96,7 +97,7 @@ def plot_language_graph(data):
     fig.update_traces(marker_color="green")
 
     # Display the bar graph
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
 
 # to display summary cards
@@ -125,7 +126,7 @@ def plot_birth_columns(data):
     )
 
     # Display the line chart
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
 
 # Main Streamlit app
@@ -148,11 +149,8 @@ def main():
     col3, col4 = st.columns(2)
 
     with col1:
-        #create_count_plot(data)
-        st.bar_chart(
-            data["neet_ever"].value_counts(),
-            use_container_width=True
-        )
+        # create_count_plot(data)
+        st.bar_chart(data["neet_ever"].value_counts(), use_container_width=True)
 
     with col2:
         display_gender_enrollment_pie_chart(data)
@@ -161,12 +159,10 @@ def main():
         plot_ethnicity_columns(data)
 
     with col4:
-        st.write("test")
-
-    
-    plot_language_graph(data)
+        plot_language_graph(data)
 
     plot_birth_columns(data)
+
     create_absence_table(data)
 
 

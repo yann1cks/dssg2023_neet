@@ -17,7 +17,7 @@ def main():
     ut.initalize_global_state()
 
 
-    st.title("Welcome to the Risko of NEET dashboard 👋", anchor=False)
+    st.title("Welcome to the Risk of NEET dashboard 👋", anchor=False)
 
     """
     This dashboard allows you to:
@@ -26,6 +26,7 @@ def main():
     * Upload new data to enhance the model.
     * Get a spreadsheet with risk predication for every youth.
     """
+
 
 # Run the Streamlit app
 if __name__ == "__main__":

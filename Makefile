@@ -29,7 +29,7 @@ run_model: run_all
 
 # to be added here #
 
-run_api:
+run_streamlit:
 	@streamlit run $(CURRENT_DIR)/neet/streamlit_api/Start.py
 
 #################### TESTS ###################

@@ -42,6 +42,7 @@ def add_uploaded_file_to_state(
     # Add the uploaded file to the raw data state with relevant information
     st.session_state.data_raw.append(file_info)
 
+
 def get_file_name(dataset_type, year) -> str:
     """
     Creates the filename.
@@ -54,6 +55,7 @@ def get_file_name(dataset_type, year) -> str:
         filename: String of the filename
     """
     return dataset_type + "_" + year + ".csv"
+
 
 def initalize_global_state() -> None:
     """
@@ -79,10 +81,20 @@ def initalize_global_state() -> None:
 
             add_uploaded_file_to_state(dataset_type, year, df)
 
-    # Initialize final data
     if "data_final" not in st.session_state:
-        st.session_state.data_final = pd.read_csv(
-            "neet/streamlit_api/train_singleUPN.csv"
+        # Needs to be replaced with the pipeline and the result should be saved to disk
+        data = pd.read_csv("neet/streamlit_api/train_singleUPN.csv")
+        st.session_state.data_final = data.set_index("upn")
+    
+    # Keep a csv of the final dataset to avoid creating the csv at every reload.
+    if "data_final_csv" not in st.session_state:
+        data = st.session_state.data_final
+        st.session_state.data_final_csv = data.to_csv().encode('utf-8')
+        
+    if "data_final_uids" not in st.session_state:   
+        # Each value should be unique but lets be sure.
+        st.session_state.data_final_uids = set(
+            (st.session_state.data_final).index.unique()
         )
 
 
