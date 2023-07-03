@@ -1,6 +1,0 @@
-2023-06-26 11:06:28,603 INFO     Logfile will be written to ../logs\canonicalize_2023_06_26_11_06_28.txt
-2023-06-26 11:06:28,603 INFO     Reading ..\\..\\data\\synthetic_data\\attendance_original_csv\\attendance_original_may18.csv
-2023-06-26 11:06:28,603 INFO     Reading all data as str
-2023-06-26 11:06:28,635 INFO     Replacing ['', '#VALUE!', 'nan'] with np.nan
-2023-06-26 11:06:28,698 INFO     Renaming columns of attendance dataset
-2023-06-26 11:06:28,698 INFO     Saving canonicalized data to ..\\..\\data\\interim\\attendance_canonicalized_csv\\attendance_interim_may18.csv

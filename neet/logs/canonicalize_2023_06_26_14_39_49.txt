@@ -1,6 +1,0 @@
-2023-06-26 14:39:49,775 INFO     Logfile will be written to ../logs\canonicalize_2023_06_26_14_39_49.txt
-2023-06-26 14:39:49,775 INFO     Reading ..\\..\\data\\synthetic_data\\characteristics_original_csv\\characteristics_original_mar22.csv
-2023-06-26 14:39:49,775 INFO     Reading all data as str
-2023-06-26 14:39:49,791 INFO     Replacing ['', '#VALUE!', 'nan'] with np.nan
-2023-06-26 14:39:49,816 INFO     Renaming columns of characteristics dataset
-2023-06-26 14:39:49,820 INFO     Saving canonicalized data to ..\\..\\data\\interim\\characteristics_canonicalized_csv\\characteristics_interim_mar22.csv

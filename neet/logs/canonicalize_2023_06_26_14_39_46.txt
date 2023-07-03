@@ -1,6 +1,0 @@
-2023-06-26 14:39:46,754 INFO     Logfile will be written to ../logs\canonicalize_2023_06_26_14_39_46.txt
-2023-06-26 14:39:46,754 INFO     Reading ..\\..\\data\\synthetic_data\\ks4_original_csv\\ks4_original_sep18.csv
-2023-06-26 14:39:46,754 INFO     Reading all data as str
-2023-06-26 14:39:46,838 INFO     Replacing ['', '#VALUE!', 'nan'] with np.nan
-2023-06-26 14:39:47,029 INFO     Renaming columns of ks4 dataset
-2023-06-26 14:39:47,030 INFO     Saving canonicalized data to ..\\..\\data\\interim\\ks4_canonicalized_csv\\ks4_interim_sep18.csv
