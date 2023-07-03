@@ -1,11 +1,14 @@
 from pathlib import Path
-from typing import Literal, BinaryIO
 import pandas as pd
 import streamlit as st
+import os
+from dotenv import load_dotenv
 
+# Get .env data
+load_dotenv()
 
-# Define a streamlit folder
-STREAMLIT_FOLDER = Path("neet/streamlit_api/")
+STREAMLIT_FOLDER = Path.cwd() / os.getenv("STREAMLIT_PATH")
+DATA_FOLDER = Path.cwd() / os.getenv("DATA_SYNTHETIC_PATH")
 
 
 def add_custom_css() -> None:
@@ -83,15 +86,15 @@ def initalize_global_state() -> None:
 
     if "data_final" not in st.session_state:
         # Needs to be replaced with the pipeline and the result should be saved to disk
-        data = pd.read_csv("neet/streamlit_api/train_singleUPN.csv")
+        data = pd.read_csv(DATA_FOLDER / "train_singleUPN.csv")
         st.session_state.data_final = data.set_index("upn")
-    
+
     # Keep a csv of the final dataset to avoid creating the csv at every reload.
     if "data_final_csv" not in st.session_state:
         data = st.session_state.data_final
-        st.session_state.data_final_csv = data.to_csv().encode('utf-8')
-        
-    if "data_final_uids" not in st.session_state:   
+        st.session_state.data_final_csv = data.to_csv().encode("utf-8")
+
+    if "data_final_uids" not in st.session_state:
         # Each value should be unique but lets be sure.
         st.session_state.data_final_uids = set(
             (st.session_state.data_final).index.unique()

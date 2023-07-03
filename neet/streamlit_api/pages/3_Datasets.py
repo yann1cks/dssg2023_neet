@@ -3,14 +3,17 @@ from typing import Literal, BinaryIO
 import pandas as pd
 import streamlit as st
 import utils as ut
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 st.set_page_config(
     page_title="Upload Data",
     page_icon="🔮",
 )
 
-# Define a streamlit folder
-STREAMLIT_FOLDER = Path("neet/streamlit_api/")
+STREAMLIT_FOLDER = Path.cwd() / os.getenv("STREAMLIT_PATH")
 
 # Define dict that contains every dataset as key-value-pairs. (Cannot be used for Literals.)
 DATASET_TYPES = {
